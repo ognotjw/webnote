@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WEBNOTE</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <h1 class="heading">WEBNOTE</h1>
+    <div class="toolbar">
+      <button class="bold-button" onclick="toggleBold();">B</button>
+      <button class="italic-button" onclick="toggleItalic();">I</button>
+      <button class="underline-button" onclick="toggleUnderline();">U</button>
+      <button class="bullet-list-button" onclick="insertBulletList();">
+        &bull;
+      </button>
+      <input class="font-size" type="number" />
+    </div>
+
+    <div class="textbox" contenteditable="true"></div>
+
+    <script src="index.js"></script>
+  </body>
+</html>

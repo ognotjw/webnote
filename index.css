@@ -1,0 +1,36 @@
+.heading {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+body {
+  height: 3000px;
+}
+
+.toolbar {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: sticky;
+  background-color: red;
+  top: 0;
+}
+
+.bold-button,
+.italic-button,
+.underline-button {
+  font-weight: bold;
+}
+
+.italic-button {
+  font-style: italic;
+}
+
+.underline-button {
+  text-decoration-line: underline;
+}
+
+.textbox {
+  font-weight: normal;
+}
