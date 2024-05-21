@@ -3,22 +3,53 @@
   <head>
     <title>WEBNOTE</title>
     <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
+    <!-- heading -->
     <h1 class="heading">WEBNOTE</h1>
+
+    <!-- toolbar -->
     <div class="toolbar">
-      <button class="bold-button" onclick="toggleBold();">B</button>
-      <button class="italic-button" onclick="toggleItalic();">I</button>
-      <button class="underline-button" onclick="toggleUnderline();">U</button>
-      <button class="bullet-list-button" onclick="insertBulletList();">
+      <button class="bold-button" onclick="toggleBold();" title="Bold">
+        B
+      </button>
+      <button class="italic-button" onclick="toggleItalic();" title="Italics">
+        I
+      </button>
+      <button
+        class="underline-button"
+        onclick="toggleUnderline();"
+        title="Underline"
+      >
+        U
+      </button>
+      <button
+        class="bullet-list-button"
+        onclick="insertBulletList();"
+        title="Bullet List"
+      >
         &bull;
       </button>
-      <input class="font-size" type="number" />
+      <button class="save-button" onclick="saveCookie('textbox');">Save</button>
+      <button class="load-button" onclick="loadCookie('textbox')">Load</button>
     </div>
 
+    <!-- textbox -->
     <div class="textbox" contenteditable="true"></div>
 
+    <!-- needs to be manually updated -->
+    <div class="version-number">v1.0.0</div>
+
     <script src="index.js"></script>
+
+    <!-- compression for textbox content -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js"></script>
   </body>
 </html>

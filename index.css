@@ -1,25 +1,41 @@
+* {
+  font-family: "Open Sans";
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
 .heading {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  font-size: 48px;
+  font-weight: 800;
+  text-align: center;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 500px;
 }
 
-body {
-  height: 3000px;
-}
-
+/** begin toolbar styling **/
 .toolbar {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
   position: sticky;
-  background-color: red;
   top: 0;
+  width: 99%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: auto;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  background-color: #edf2fa;
 }
 
 .bold-button,
 .italic-button,
-.underline-button {
+.underline-button,
+.save-button,
+.load-button {
   font-weight: bold;
 }
 
@@ -29,4 +45,76 @@ body {
 
 .underline-button {
   text-decoration-line: underline;
+}
+
+.bold-button,
+.italic-button,
+.underline-button,
+.bullet-list-button {
+  margin-left: 7.5px;
+  margin-right: 7.5px;
+  height: 30px;
+  width: 30px;
+  border-radius: 7.5px;
+  border-style: solid;
+  background-color: #eaf1fc;
+  transition-duration: 200ms;
+}
+
+.bold-button:hover,
+.italic-button:hover,
+.underline-button:hover,
+.bullet-list-button:hover {
+  background-color: rgb(211, 211, 211);
+  border-style: solid;
+  border-color: rgb(167, 167, 167);
+}
+
+.save-button,
+.load-button {
+  margin-left: 7.5px;
+  margin-right: 7.5px;
+  height: 30px;
+  width: 55px;
+  border-radius: 7.5px;
+  border-style: solid;
+  background-color: #eaf1fc;
+  transition-duration: 200ms;
+}
+
+.save-button:hover,
+.load-button:hover {
+  background-color: rgb(211, 211, 211);
+  border-style: solid;
+  border-color: rgb(167, 167, 167);
+}
+/** end toolbar styling **/
+
+/** byllet list starts far too left in the text box without this **/
+.bullet-list-ul {
+  margin-left: 20px;
+}
+
+.textbox {
+  width: 97%;
+  margin: auto;
+  padding: 15px;
+  border-style: solid;
+  border-radius: 10px;
+  word-wrap: normal;
+}
+
+/** for the fun of it **/
+.version-number {
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  padding: 5px;
+  background-color: white;
+  opacity: 0;
+  transition-duration: 500ms;
+}
+
+.version-number:hover {
+  opacity: 100%;
 }

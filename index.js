@@ -52,7 +52,7 @@ function selectionIsItalic() {
 }
 
 
-//underline
+// underline
 function toggleUnderline() {
   const editor = document.getElementsByClassName("textbox")[0]; // Assuming there's only one element with the class "textbox"
   const selection = window.getSelection();
@@ -78,6 +78,7 @@ function selectionIsUnderline() {
   return isUnderline;
 }
 
+
 // bullet list
 function insertBulletList() {
   const editor = document.getElementsByClassName("textbox")[0]; // Assuming there's only one element with the class "textbox"
@@ -92,7 +93,10 @@ function insertBulletList() {
   if (!isInList) {
     // Insert <ul> at the cursor position
     const ulElement = document.createElement("ul");
+    ulElement.className = "bullet-list-ul"; // Add class name here
     const liElement = document.createElement("li");
+    liElement.className = "bullet-list-li"; // Add class name here
+    
     liElement.innerHTML = '&nbsp;'; // Inserting a non-breaking space to make the bullet visible
     ulElement.appendChild(liElement);
     range.deleteContents();
@@ -119,4 +123,48 @@ function cursorIsInList() {
 }
 
 // Event listener to trigger the insertion of bullet list
-document.getElementsByClassName('bullet-list-button').addEventListener('click', insertBulletList);
+const bulletListButton = document.getElementsByClassName('bullet-list-button')[0];
+bulletListButton.addEventListener('click', insertBulletList);
+
+
+// save content to cookie
+function saveCookie(className) {
+  var div = document.getElementsByClassName(className)[0];
+  if (div) {
+      var divContent = div.innerHTML;
+      
+      // Compress the div content
+      var compressedContent = LZString.compressToBase64(divContent);
+
+      var expirationDate = new Date();
+      expirationDate.setTime(expirationDate.getTime() + (24 * 60 * 60 * 1000)); // 24 hours
+
+      document.cookie = className + "=" + encodeURIComponent(compressedContent) + "; expires=" + expirationDate.toUTCString() + "; path=/; SameSite=None; Secure";
+      console.log("Div content saved to cookie successfully.");
+  } else {
+      console.error("Div with class '" + className + "' not found.");
+  }
+}
+
+
+// load content from cookie
+function loadCookie(className) {
+  var decodedContent;
+  var cookies = document.cookie.split(';');
+  cookies.forEach(cookie => {
+      var parts = cookie.split('=');
+      if (parts[0].trim() === className) {
+          // Decode and decompress the base64 content
+          var compressedContent = decodeURIComponent(parts[1]);
+          decodedContent = LZString.decompressFromBase64(compressedContent);
+          
+          var div = document.getElementsByClassName(className)[0];
+          if (div) {
+              div.innerHTML = decodedContent;
+              console.log("Div content restored from cookie successfully.");
+          } else {
+              console.error("Div with class '" + className + "' not found for restoration.");
+          }
+      }
+  });
+}
